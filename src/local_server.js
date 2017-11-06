@@ -15,10 +15,6 @@ const app             = express();
 
 const port = 8888;
 
-require('instana-nodejs-sensor')({
-  agentHost: '172.17.0.1', // use IPv6 to contact via localhost
-});
-
 var alexaRouter = express.Router()
 app.use('/skill', alexaRouter)
 
