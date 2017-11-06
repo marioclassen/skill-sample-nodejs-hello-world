@@ -2,10 +2,7 @@
 
 const express         = require('express');
 const fs              = require('fs');
-const context 		    = require('aws-lambda-mock-context');
-const httpHelper	    = require('./modules/httpHelper');
-const config          = require("./config")();
-const helmet          = require('helmet');
+const context 		  = require('aws-lambda-mock-context');
 const verifier        = require('alexa-verifier-middleware');
 const http            = require('http');
 
@@ -13,15 +10,15 @@ const http            = require('http');
 const lambda          = require('./index');
 const app             = express();
 
+// The local port
 const port = 8888;
 
-var alexaRouter = express.Router()
-app.use('/skill', alexaRouter)
+var alexaRouter = express.Router();
+app.use('/skill', alexaRouter);
 
 // attach the verifier middleware first because it needs the entire
 // request body, and express doesn't expose this on the request object
-alexaRouter.use(verifier)
-app.use(helmet()); //secure
+alexaRouter.use(verifier);
 
 alexaRouter.post('/', function (req, res) {
     var ctx = context({
