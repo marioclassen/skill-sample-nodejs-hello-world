@@ -7,10 +7,11 @@ const httpHelper	    = require('./modules/httpHelper');
 const config          = require("./config")();
 const helmet          = require('helmet');
 const verifier        = require('alexa-verifier-middleware');
+const http            = require('http');
 
 // lambda.js contains the lambda function for Alexa as in https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs
 const lambda          = require('./index');
-const app = express();
+const app             = express();
 
 const port = 8888;
 
